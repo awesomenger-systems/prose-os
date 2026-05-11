@@ -1,12 +1,12 @@
-# 🏗️ Architecture — How the 17-Stage ProseOS Pipeline Works
+# 🏗️ Architecture — How Prose OS Pipeline Works
 
-ProseOS is a linear state machine designed to mimic a high-end editorial department. By decomposing the writing process into 17 atomic stages, the system maintains **architectural control** over long-form content, preventing the "vague drift" common in single-prompt AI outputs.
+Prose OS is a state-machine-driven editorial pipeline that turns raw topics into polished, publication-ready long-form essays using Google Sheets as a lightweight orchestration runtime.
+
+By decomposing long-form writing into deterministic editorial stages, the system achieves significantly better consistency, recoverability, and structural control than single-prompt workflows.
 
 ---
 
-## 🗺️ Pipeline Overview
-
-ProseOS breaks essay generation into 17 discrete, quality-controlled stages. Each stage has a single responsibility, clear inputs/outputs, and built-in validation.
+# 🗺️ Current Pipeline Architecture
 
 ```text
 TOPIC INPUT
@@ -15,7 +15,7 @@ TOPIC INPUT
     ↓
 ② Insight Generator
     ↓
-③ Thesis Architect
+③ Structure Planner
     ↓
 ④ Hook Writer
     ↓
@@ -23,208 +23,468 @@ TOPIC INPUT
     ↓
 ⑥ Writer Part 2
     ↓
-⑦ Word Count Gate          ⚠️ Quality Gate (no API)
+⑦ Fact Checker
     ↓
-⑧ Fact Checker (Part 1)
+⑧ Voice Architect (Optional)
     ↓
-⑨ Fact Checker (Part 2)
+⑨ SEO Generator
     ↓
-⑩ Merge Sections            ⚠️ Logic only
+⑩ Final Editor
     ↓
-⑪ Voice Architect (Part 1)
-    ↓
-⑫ Voice Architect (Part 2)
-    ↓
-⑬ Link Injector             ⚠️ Logic only
-    ↓
-⑭ Blog Formatter
-    ↓
-⑮ SEO Generator
-    ↓
-⑯ Image Prompt Architect
-    ↓
-⑰ Final Editor              ⚠️ Creates Google Doc
-    ↓
-PUBLISHED GOOGLE DOC + METADATA
-````
+PUBLICATION-READY GOOGLE DOC + METADATA
+```
 
------
-
+Each stage executes independently and advances the pipeline state forward.
 
 ---
 
-## Stage-by-Stage Breakdown
+# ⚙️ Execution Model
 
-### ① Duplicate Check
+- One row processed per execution
+- One stage executed at a time
+- State persisted in Google Sheets
+- Recoverable after failures or quota interruptions
+- Optimized around Apps Script execution limits
 
-**Purpose:** Prevent redundant essays by detecting topic overlap.  
-**Method:** Scans the **Memory** sheet for 40%+ keyword overlap with previously published topics.  
-**API Cost:** 0 (pure logic)
+This architecture prioritizes:
 
-**Why it exists:** Saves API credits and maintains a clean content archive.
+- Reliability
+- Recoverability
+- Cost control
+- Long-form stability
+- Workflow transparency
 
-**Common Output:**  
-- `DUPLICATE WARNING` → Topic overlaps with an existing essay.  
-**Fix:** Change the angle or manually set Agent to "Insight Generator" and run Force Rerun.
-
----
-
-### ② Insight Generator
-
-**Purpose:** Generate foundational, non-obvious ideas before writing begins.  
-**Output:** 3 high-value insights + 2 observable behavioral/cultural patterns.  
-**API Cost:** 1 call
-
-**Why it exists:** Ensures the essay has depth and originality rather than generic content.
-
-**Failure Mode:** Malformed response (missing `INSIGHTS:` or `PATTERNS:` labels).  
-**Fix:** Force Rerun.
+over raw generation speed.
 
 ---
 
-### ③ Thesis Architect
-
-**Purpose:** Synthesize insights into a single, strong, tension-filled thesis statement.  
-**Output:** 1–2 sentence thesis.  
-**API Cost:** 1 call
-
-**Note:** If you manually enter content in the **Thesis** column, this stage is automatically skipped.
+# 🧠 Stage-by-Stage Breakdown
 
 ---
 
-### ④ Hook Writer
+## ① Duplicate Check
 
-**Purpose:** Craft a compelling opening paragraph (60–90 words).  
-**Rules:** Start with a concrete observation, create curiosity, do **not** state the thesis directly.  
-**API Cost:** 1 call
+### Purpose
 
----
+Prevent creating content too similar to previously published work.
 
-### ⑤ Writer Part 1 & ⑥ Writer Part 2
+### Method
 
-**Purpose:** Generate the full essay in two parts to avoid truncation issues common with long outputs.
+Simple keyword overlap check against the `Memory` sheet.
 
-- **Part 1** (~800 words): Opens the essay, includes answer capsule, and builds the argument. Ends with `<<<CONTINUES>>>`.
-- **Part 2** (~800 words): Continues directly from Part 1, fully develops the thesis, and ends with a memorable insight. Ends with `<<<COMPLETE>>>`.
+Can later be upgraded to:
 
-**API Cost:** 2 calls
+- Semantic similarity
+- Embedding search
+- Vector memory systems
 
-**Why split?** Improves reliability and allows better quality control between sections.
+### API Cost
 
----
+`0 API calls`
 
-### ⑦ Word Count Gate ⚠️
+### Outcome
 
-**Purpose:** Quality control gate (no API call).  
-**Checks:**
-- Section 1 ≥ 300 words
-- Section 2 ≥ 300 words
-- Total essay ≥ 1000 words
-
-**If it fails:** Set Agent back to "Writer Part 1" and Force Rerun.
+| Result | Behavior |
+|---|---|
+| Pass | Continue pipeline |
+| Fail | Move row to `Content Fail` |
 
 ---
 
-### ⑧–⑨ Fact Checker (Part 1 & Part 2)
+## ② Insight Generator
 
-**Purpose:** Verify factual accuracy while preserving voice and structure.  
-**Behavior:** Only rewrites incorrect or unverifiable claims.  
-**API Cost:** 2 calls (can be skipped via "Skip Fact-Check" column)
+### Purpose
 
-**Recommendation:** Skip for well-known or opinion-based topics to save cost.
+Extract non-obvious ideas and patterns before drafting begins.
 
----
+### Typical Outputs
 
-### ⑩ Merge Sections ⚠️
+- Foundational insights
+- Behavioral patterns
+- Contrasting perspectives
+- Editorial angles
 
-**Purpose:** Combine Part 1 and Part 2 into a single `Final Essay` column.  
-**API Cost:** 0 (logic only)
+### Why It Exists
 
----
+This stage improves originality and prevents generic long-form output.
 
-### ⑪–⑫ Voice Architect (Part 1 & Part 2)
+### API Cost
 
-**Purpose:** Polish the prose — improve rhythm, clarity, specificity, and memorability.  
-**Key Note:** This stage is **optional**.  
-
-**Recommendation:** Skip Voice Architect (`RECOMMEND_SKIP_VOICE = true` or set "Skip Voice = Yes"). Most users find the marginal improvement not worth the extra 2 API calls.
-
-**API Cost:** 2 calls (skippable)
+`1 API call`
 
 ---
 
-### ⑬ Link Injector ⚠️
+## ③ Structure Planner
 
-**Purpose:** Prepare internal linking suggestions from the **Published Links** sheet and list authority domains.  
-**API Cost:** 0 (logic only)  
-**Output:** Stores context in the **Notes** column for easy manual review.
+### Purpose
 
----
+Create logical flow and editorial framing before generation.
 
-### ⑭ Blog Formatter
+### Typical Outputs
 
-**Purpose:** Convert plain prose into a well-structured blog post with H1, H2s, pull-quotes, and lists.  
-**API Cost:** 1 call
+- Section structure
+- Narrative progression
+- Editorial flow
+- Structural guidance
 
----
+### Why It Exists
 
-### ⑮ SEO Generator
+Separating structure from drafting improves long-form coherence and reduces prompt drift.
 
-**Purpose:** Generate SEO metadata including best title, meta description, slug, and FAQs.  
-**API Cost:** 1 call
+### API Cost
 
----
-
-### ⑯ Image Prompt Architect
-
-**Purpose:** Generate 3 high-quality editorial image prompts (Hero, Section-focused, Anchor) in a conceptual style.  
-**API Cost:** 1 call
-
-**Usage:** Copy prompts into Gemini.app (free tier works).
+`1 API call`
 
 ---
 
-### ⑰ Final Editor ⚠️
+## ④ Hook Writer
 
-**Purpose:** Create a professionally formatted Google Doc with the essay and SEO metadata.  
-**API Cost:** 0 (logic + Google Docs API)
+### Purpose
 
-**Output:** A clean, publication-ready Google Document.
+Craft a strong opening that captures attention immediately.
 
----
+### Typical Goals
 
-## Cost Summary
+- Reader curiosity
+- Narrative tension
+- Clear framing
+- Strong opening momentum
 
-| Mode                        | API Calls | Approx. Time | Use Case                     |
-|----------------------------|-----------|--------------|------------------------------|
-| Full Pipeline              | 11–13     | 2–3 minutes  | Maximum quality              |
-| Skip Voice (Recommended)   | 9–11      | ~2 minutes   | Best balance                 |
-| Skip Fact + Voice          | 7–9       | 90–120 sec   | Speed & cost optimization    |
+### API Cost
 
----
-
-## Quality Gates (No API Cost)
-
-- **Word Count Gate**
-- **Merge Sections**
-- **Final Editor**
-
-These gates act as safety checkpoints. If any fail, the pipeline pauses with a clear recovery suggestion.
+`1 API call`
 
 ---
 
-## Error Recovery Guidelines
+## ⑤ Writer Part 1
 
-1. Check the **Usage Log** column for specific suggestions.
-2. Set the **Agent** column back to the failed stage.
-3. Click **Force Rerun**.
-4. Most transient errors (truncation, malformed output) resolve on retry.
+### Purpose
 
-**Persistent issues?**  
-- Try a shorter or more focused topic  
-- Refine your `STYLE_PROFILE`  
-- Skip optional stages (Voice / Fact Check)
+Generate the first half of the article.
+
+### Output
+
+~800–1000 words ending with:
+
+```text
+===CONTINUE_WRITING===
+```
+
+### API Cost
+
+`1 API call`
 
 ---
 
-**Next:** See `VOICE_PROFILE_EXAMPLE.md` for guidance on customizing your voice.
+## ⑥ Writer Part 2
+
+### Purpose
+
+Continue and complete the article.
+
+### Output
+
+Continuation + conclusion ending with:
+
+```text
+===ESSAY_COMPLETE===
+```
+
+### Why Split Long-Form Generation?
+
+Splitting long-form generation into multiple stages improves:
+
+- Continuity
+- Recoverability
+- Token efficiency
+- Output stability
+
+### API Cost
+
+`1 API call`
+
+---
+
+## ⑦ Fact Checker
+
+### Purpose
+
+Review the merged article for factual risks and logical inconsistencies.
+
+### Behavior
+
+Advisory-only review intended to preserve:
+
+- Editorial structure
+- Narrative flow
+- Authorial voice
+
+while identifying:
+
+- Unsupported claims
+- Factual issues
+- Contradictions
+
+### API Cost
+
+`1 API call`
+
+### Optional?
+
+Yes. Can be skipped for lower-cost workflows.
+
+---
+
+## ⑧ Voice Architect (Optional)
+
+### Purpose
+
+Editorial refinement layer focused on prose quality.
+
+### Focus Areas
+
+- Clarity
+- Rhythm
+- Precision
+- Readability
+- Structural cleanup
+
+### Recommendation
+
+Keep:
+
+```javascript
+RECOMMEND_SKIP_VOICE = true;
+```
+
+initially to reduce API cost.
+
+Enable refinement only when additional editorial polish is required.
+
+### API Cost
+
+`1 API call`
+
+---
+
+## ⑨ SEO Generator
+
+### Purpose
+
+Generate search- and AI-engine-friendly metadata.
+
+### Typical Outputs
+
+- SEO title
+- Meta description
+- Slug
+- FAQs
+- AEO metadata
+
+### Why It Exists
+
+Writing and distribution formatting are intentionally separated.
+
+### API Cost
+
+`1 API call`
+
+---
+
+## ⑩ Final Editor
+
+### Purpose
+
+Assemble all outputs into a clean, formatted Google Document.
+
+### Outputs
+
+- Publication-ready Google Doc
+- Structured headings
+- SEO metadata section
+- Formatted long-form draft
+
+### API Cost
+
+`0 API calls`
+
+---
+
+# 💰 Cost & Performance Summary
+
+| Configuration | API Calls | Est. Duration | Recommended For |
+|---|---|---|---|
+| Full Pipeline | 9–10 | 2–3 min | Highest quality |
+| Skip Voice (Default) | 8–9 | ~2 min | Best balance |
+| Skip Fact + Voice | 6–7 | 75–100 sec | Fast drafting |
+
+---
+
+# ✅ Quality Gates (Zero API Cost)
+
+Several stages intentionally use pure logic instead of API calls.
+
+## Validation Layers
+
+- Word Count Gate
+- Marker Validation
+- Merge Integrity Checks
+- Final Formatting Validation
+
+### Why They Exist
+
+These gates:
+
+- Prevent malformed output
+- Improve recoverability
+- Reduce wasted API calls
+- Stop broken drafts from progressing downstream
+
+---
+
+# 🔄 Error Recovery
+
+If a stage fails:
+
+1. Read the `Usage Log` column
+2. Review the failing stage
+3. Reset the `Agent` column if needed
+4. Run `Force Rerun`
+
+Most failures are transient and recoverable.
+
+---
+
+# ⚠️ Common Recovery Strategies
+
+## Quota Errors
+
+- Wait for Gemini quota reset
+- Run `Resume Quota Wait`
+
+---
+
+## Weak Outputs
+
+- Sharpen the topic
+- Reduce ambiguity
+- Improve structure guidance
+
+---
+
+## Long-Form Instability
+
+- Reduce prompt size
+- Shorten topic scope
+- Split sections more aggressively
+
+---
+
+# 📊 Core Sheets
+
+| Sheet | Purpose |
+|---|---|
+| Dashboard | Active orchestration queue |
+| Idea Bank | Topic discovery queue |
+| Memory | Semantic archive summaries |
+| Published Links | Internal linking references |
+| Pipeline Health | Runtime diagnostics |
+
+---
+
+# ☁️ Why Google Apps Script?
+
+Prose OS intentionally uses Apps Script and Google Sheets because they provide:
+
+- Native Google Sheets integration
+- Native Google Docs formatting
+- Built-in persistence
+- Collaborative editing
+- Zero infrastructure management
+- Low operational overhead
+
+This allows sophisticated editorial workflows to run without maintaining backend infrastructure.
+
+---
+
+# ⚠️ Known Constraints
+
+Apps Script introduces practical limitations:
+
+- ~6 minute execution windows
+- Sequential execution
+- Limited parallelism
+
+The architecture is intentionally designed around those constraints rather than attempting to bypass them.
+
+---
+
+# 🔒 Public vs Private Logic
+
+The public repository intentionally exposes:
+
+- Orchestration architecture
+- Pipeline sequencing
+- Recovery systems
+- State management
+- Execution design
+
+while omitting:
+
+- Proprietary prompts
+- Editorial heuristics
+- Voice systems
+- Internal optimization logic
+- Refinement strategies
+
+This keeps the framework extensible while protecting editorial IP.
+
+---
+
+# 🚀 Extension Opportunities
+
+Potential future improvements include:
+
+- Embedding-based semantic search
+- Vector memory systems
+- WordPress publishing
+- Notion integration
+- Queue prioritization
+- Distributed execution
+- Multi-provider model routing
+- Advanced analytics dashboards
+
+---
+
+# 🧠 Design Philosophy
+
+- Single responsibility per stage
+- Resumable execution
+- Observable workflow state
+- Fail fast + recover easily
+- Cost-aware generation
+- Spreadsheet-native orchestration
+
+The pipeline treats long-form generation as an orchestration problem rather than a prompting problem.
+
+---
+
+# 📚 Recommended Reading
+
+- `README.md`
+- `scripts/pipeline.gs`
+- `docs/CUSTOMIZATION.md`
+- `docs/ERROR_RECOVERY.md`
+- `docs/VOICE_PROFILE_EXAMPLE.md`
+
+---
+
+# 📌 Next Step
+
+See:
+
+```text
+docs/VOICE_PROFILE_EXAMPLE.md
+```
+
+for guidance on customizing your editorial voice and refinement behavior.
