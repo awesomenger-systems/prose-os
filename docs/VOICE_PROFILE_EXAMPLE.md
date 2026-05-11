@@ -1,398 +1,344 @@
-# VOICE PROFILE — How to Customize Your Writing Voice
+# 🎨 Voice Profile — How to Customize Your Writing Voice
 
-This is the most important customization. The quality of your content depends 90% on how well you define your voice.
+**This is the most important customization in Prose OS.**
 
----
+While the pipeline handles orchestration and structure, `STYLE_CORE` and `VOICE_CORE` determine the actual editorial quality and distinctiveness of your output.
 
-## Understanding the Two Profiles
-
-### STYLE_PROFILE (Lines 60-110)
-**Defines:** How you *write* the content
-- Your perspective and worldview
-- Sentence structure preferences
-- Tone and confidence level
-- What arguments do you favor
-- What you never do
-
-**Used in:** Writer Part 1, Writer Part 2 (the drafting stages)
-
-### VOICE_PROFILE (Lines 110-160)
-**Defines:** How you *edit* the content
-- What makes a sentence memorable
-- How to sharpen without rewriting
-- Sentence rhythm and variety
-- What to cut, what to expand
-- How to ensure quality
-
-**Used in:** Voice Architect Part 1, Voice Architect Part 2 (the editing stages)
-
-**Key difference:**
-- STYLE = drafting decisions
-- VOICE = editing decisions
-
-They're related but different.
+Most improvements in output quality come from iteratively refining these two constants.
 
 ---
 
-## Complete Working Example
+# 🧠 Understanding the Two Profiles
 
-Here's a real STYLE_PROFILE you can adapt:
+| Profile | Used In | Controls |
+|---|---|---|
+| `STYLE_CORE` | Writer Part 1 & 2 | Drafting behavior, tone, perspective, structure |
+| `VOICE_CORE` | Voice Architect | Editing, sharpening, refinement, polishing |
+
+---
+
+## STYLE_CORE = The Writer
+
+This profile controls:
+
+- Narrative structure
+- Tone
+- Framing
+- Formatting behavior
+- Editorial perspective
+- Writing rhythm
+
+Think of this as:
+
+> The writer.
+
+---
+
+## VOICE_CORE = The Editor
+
+This profile controls:
+
+- Clarity
+- Precision
+- Flow
+- Cleanup behavior
+- Sentence refinement
+- Structural polishing
+
+Think of this as:
+
+> The editor.
+
+---
+
+# 🚀 Recommended Workflow
+
+Do not try to perfect your voice profile immediately.
+
+The best workflow is iterative:
+
+1. Start with a simple, clear profile
+2. Generate 5–10 essays
+3. Observe what is working and what is not
+4. Add specific rules and constraints
+5. Repeat
+
+Strong voices evolve gradually through iteration.
+
+---
+
+# 🧩 Starter Templates
+
+## STYLE_CORE Template
 
 ```javascript
-const STYLE_PROFILE = `
-You are writing in the voice of [YOUR NAME] — a [descriptor] writer.
+const STYLE_CORE = `
+You are writing as [Your Name / Persona] — [one-line descriptor].
 
 CORE INTENT:
-You reveal something the reader already senses but hasn't articulated clearly.
-You deepen it through layered perspectives.
-You avoid easy answers and comfort.
-
-PRIMARY GOAL:
-Balance depth, clarity, and impact.
-If forced to choose, prioritize insight over structure.
-The writing should feel insightful when read deeply, clear when skimmed, and memorable after reading.
+[What should the reader understand or feel after reading?]
 
 VOICE:
-Calm, observant, quietly confident, and slightly provocative.
-Never loud. Never preachy. Never performative.
-You are not teaching or advising. You are helping the reader see something more clearly.
-Avoid synthetic optimism — do not soften or uplift endings artificially.
-If the truth is sobering, let it remain sobering.
+[Describe tone, energy, and worldview]
 
 STYLE DNA:
-- [Writer 1]: [One quality you admire, e.g., "clarity and precision"]
-- [Writer 2]: [One quality, e.g., "rhythm and surprise"]
-- [Writer 3]: [One quality, e.g., "psychological depth"]
-
-CRITICAL RULE — MEMORABILITY:
-Include 2–4 striking, highly quotable sentences.
-These should feel deeply true, slightly uncomfortable, or unexpectedly clear.
-A memorable sentence never uses three adjectives where one noun will do.
-
-MULTI-LENS THINKING:
-Explore ideas through 2–3 natural perspectives:
-- Psychological (behavior, emotion, motivation)
-- Philosophical (meaning, truth, values)
-- Social (culture, systems, groups)
-- Practical (real-world consequences)
-- Neurological (how the brain processes this)
-
-Do NOT label these lenses explicitly.
-Let each shift deepen the same idea invisibly.
-Prefer shifting perspectives over over-explaining one.
-
-STRUCTURE:
-Use clear H2 headings. Each section explores a distinct angle.
-Paragraphs: 2–5 sentences, one idea per paragraph.
-Maintain flow — structure should support, not interrupt thinking.
-
-CONTENT DEPTH:
-Each section should:
-1. State something true
-2. Explain it simply
-3. Deepen it with another perspective
-4. Add a subtle contradiction or insight
-
-SENTENCES:
-- 10–25 words average
-- Mix short and medium sentences
-- Occasionally include one longer, more rhythmic sentence per section
-- One idea per sentence (unless rhythm requires otherwise)
-- Use simple, precise, human language
-- Prefer concrete observations over abstraction
-
-INTRODUCTION:
-- Start with a sharp, real-world observation (never a question)
-- Establish relevance quickly
-- Integrate keyword naturally
-- Do NOT use statistics as your hook
-
-ENDING:
-- Do NOT summarize
-- End with a reframing or deeper insight
-- Should feel earned and linger in the reader's mind
-- Should feel like the content earned it
+- [Influential writer]&#58; [specific quality you admire]
+- [Influential writer]&#58; [specific quality you admire]
 
 FORBIDDEN:
-- Rhetorical question openers
-- Clickbait or marketing tone ("Here's what you're missing...")
-- Motivational/self-help tone
-- Academic jargon or overly formal language
-- AI transitions (Furthermore, Moreover, Additionally)
-- Filler phrases (In today's world, In conclusion, At the end of the day)
-- Sequential structures (Firstly, Secondly, Finally)
-- Overly complex metaphors or forced analogies
+- List patterns, tones, or phrases you never want
 
-READER EXPERIENCE:
-Skimmer: gets clarity through structure and sharp sentences
-Reader: gets layered insight through perspective shifts
-After reading: remembers at least 2–3 lines and feels a deeper clarity
+STRUCTURAL PREFERENCES:
+- Paragraph length
+- Heading usage
+- Transition style
+- Narrative flow
+
+SENTENCE RULES:
+- Preferred rhythm
+- Sentence length
+- Cadence preferences
 `;
 ```
 
 ---
 
-## Example VOICE_PROFILE
+## VOICE_CORE Template
 
 ```javascript
-const VOICE_PROFILE = `
-You are editing in the voice of [YOUR NAME].
+const VOICE_CORE = `
+You are an editor working in the voice of [Your Name].
 
-VOICE:
-Calm, observant, quietly confident, and slightly provocative.
-Never loud. Never preaching. Never performative.
-Help the reader see something more clearly.
-If the truth is sobering, let it remain sobering.
+PRIMARY GOAL:
+Sharpen clarity, rhythm, precision, and impact while preserving original meaning.
 
-CRITICAL EDIT FIRST:
-Before touching the voice, check for these structural problems and fix them:
-- A claim made without support or example
-- A paragraph that repeats the idea of the previous paragraph
-- A sentence that contradicts the overall argument
-- An obvious observation a reader would skip over
-- Any transition that feels mechanical
+CRITICAL EDITS:
+- Remove redundancy and repetition
+- Strengthen weak sentences
+- Improve flow and cadence
 
-VOICE SHARPENING:
-- Vary sentence rhythm deliberately — break up monotonous runs
-- Replace vague or generic phrases with specific, concrete language
-- Cut any sentence that does not add meaning
-- Ensure 2-4 sentences are deeply quotable
-- Do NOT change facts, examples, or argument
+FORBIDDEN IN EDITS:
+- Adding new ideas or examples
+- Changing core argument
+- Adding headings or lists
+- Adding motivational language
 
-FORBIDDEN — ABSOLUTE:
-- Do NOT add ## or # headings — this is prose editing, not formatting
-- Do NOT add bullet points, numbered lists, or tables
-- Do NOT restructure sections or change paragraph order
-- Do NOT add new arguments or examples
-- Do NOT use transitions like "Furthermore" or "Moreover"
-- Do NOT add motivational language
-
-MULTI-LENS SHIFTING:
-Where natural, let the prose shift through 2-3 perspectives.
-Psychological, philosophical, social, practical, or neurological.
-Do NOT label these shifts. Let each deepen the same idea invisibly.
-
-SENTENCES:
-- 10–25 words average
-- Mix short and medium
-- Occasionally one longer rhythmic sentence per section
-- One idea per sentence (usually)
-- Simple, precise, human language
-- Concrete observations over abstraction
-
-OUTPUT:
-Return ONLY the revised prose paragraphs.
-No headings. No bullets. No metadata. No commentary about your edits.
+OUTPUT RULES:
+Return only clean prose.
+No commentary.
+No markdown.
 `;
 ```
 
 ---
 
-## How to Fill In the Brackets
+# ⚙️ Best Practices
 
-### [YOUR NAME]
-Your actual name or professional pen name.
+## Be Specific
 
-### [descriptor]
-One or two words: "cultural critic," "behavioral analyst," "technology contentist," etc.
+Weak:
 
-### [STYLE DNA] — The Most Important Part
-
-Name 3-5 writers whose work influences yours. Be specific about what you admire:
-
-**Good:**
-```
-- Paul Graham: idea-first clarity, thinking on the page
-- Joan Didion: restraint and rhythm, sharp observation
-- Malcolm Gladwell: narrative structure, surprising insights
+```text
+Write clearly.
 ```
 
-**Bad:**
-```
-- Good writers
-- Clear and insightful voices
-- Smart people
-```
+Better:
 
-The specificity matters. Gemini uses these as anchors to understand your voice.
-
-### Forbidden Section
-
-List things you truly don't do. Examples:
-
-```
-FORBIDDEN:
-- Rhetorical questions (never open with "What if...?")
-- Self-help tone (never say "Here's how to fix your life")
-- Numbered lists at the end ("3 Things You Should Know")
-- First-person advice ("I recommend...")
-- Clickbait ("You won't believe...")
-- Motivational language ("Unlock your potential")
-- Overly complex metaphors
-- Multiple exclamation points
+```text
+Use short declarative sentences during transitions.
+Avoid abstract framing unless introducing a new concept.
 ```
 
-### Multi-Lens Thinking
+Specific instructions produce more stable editorial behavior.
 
-Which perspectives does your writing naturally explore?
+---
+
+## Use the “Forbidden” Section Aggressively
+
+The `FORBIDDEN` section is one of the highest-leverage parts of the profile.
 
 Examples:
-- Psychological + Philosophical
-- Social + Practical
-- Neurological + Behavioral
-- Historical + Contemporary
 
-Don't force all of them. Pick what's natural to your voice.
+- Generic motivational language
+- Corporate tone
+- Repetitive openers
+- Excessive hedging
+- Buzzwords
+- Weak transitions
+- Overuse of em dashes
 
----
-
-## Testing Your Profile
-
-After you customize STYLE_PROFILE and VOICE_PROFILE:
-
-### 1. Run one topic
-- Add a topic to Dashboard
-- Click Run Pipeline
-- Let it complete
-
-### 2. Read the output
-- Open the Google Doc
-- Read it as a reader (not as an editor)
-- Does it sound like you?
-- Does it avoid your forbidden patterns?
-
-### 3. Check for these
-
-Does the content have:
-- [ ] 2-4 deeply quotable sentences
-- [ ] Clear H2 headings
-- [ ] Multiple perspectives (not just one angle)
-- [ ] Concrete examples (not abstractions)
-- [ ] A strong ending (not a summary)
-- [ ] Your forbidden patterns? (Remove from profile)
-- [ ] None of your natural voice patterns? (Add more to profile)
-
-### 4. Iterate
-If something feels off:
-- Update STYLE_PROFILE or VOICE_PROFILE
-- Save the code
-- Run Force Rerun on that row
-- Check the output again
+Negative constraints often improve quality more than positive instructions.
 
 ---
 
-## Common Mistakes
+## Separate Writing from Editing
 
-### ❌ Profile is too vague
-```
-"Clear and insightful writing"
+Do not overload `STYLE_CORE` with editing instructions.
+
+Bad:
+
+```text
+Write the article and aggressively tighten every paragraph.
 ```
 
-### ✅ Make it specific
-```
-"Direct, unadorned sentences. Show, don't tell. 
-No hedging language like 'arguably' or 'somewhat'. 
-If you make a claim, commit to it."
-```
+Better:
+
+- `STYLE_CORE` → generation behavior
+- `VOICE_CORE` → refinement behavior
+
+This separation improves consistency significantly.
 
 ---
 
-### ❌ Profile is all rules, no voice
-```
-"Use metaphors. Vary sentence length. Write short paragraphs."
+## Keep Profiles Modular
+
+Instead of:
+
+```text
+One giant monolithic prompt
 ```
 
-### ✅ Add personality
-```
-"Your metaphors should be unexpected but not forced. 
-When you use a simile, it should feel like the only way to say it.
-Short sentences for emphasis. Medium sentences for explanation. 
-Rare long sentences for rhythm — 1 per section max."
-```
+prefer modular sections:
+
+- Tone rules
+- Structural rules
+- Forbidden rules
+- Rhythm rules
+- Formatting rules
+
+Modular profiles are easier to maintain and debug.
 
 ---
 
-### ❌ STYLE_PROFILE describes how to write everything
-(Philosophy, self-help, blog posts, tweets)
+## Keep Profiles Concise
 
-### ✅ Make it specific to long-form contents
+Overly long profiles can:
+
+- Introduce prompt conflicts
+- Reduce consistency
+- Increase drift
+- Lower stability
+
+Longer is not always better.
+
+---
+
+# 🧠 High-Leverage Areas
+
+The biggest quality improvements usually come from refining:
+
+| Area | Impact |
+|---|---|
+| Forbidden patterns | Extremely high |
+| Narrative pacing | High |
+| Structural rules | High |
+| Transition behavior | High |
+| Sentence rhythm | Medium |
+| Tone descriptors | Medium |
+
+---
+
+# ⚠️ Common Mistakes
+
+| Mistake | Better Approach |
+|---|---|
+| Too generic (“write well”) | Define tone + worldview |
+| Mixing style and editing rules | Keep STYLE and VOICE separate |
+| No “Forbidden” section | Define what you do not want |
+| Trying to imitate someone else | Define your own perspective |
+| Extremely long prompts | Keep profiles focused and modular |
+
+---
+
+# 💰 Cost Optimization Note
+
+## Recommended Default
+
+```javascript
+const RECOMMEND_SKIP_VOICE = true;
 ```
-"You write long-form contents for thoughtful adults.
-Your reader has 15-30 minutes and wants depth, not quick answers.
-You are not writing tutorials, advice columns, or thought leadership.
-You're writing contents that reveal something about how the world actually works."
-```
+
+We recommend keeping Voice Architect disabled initially.
+
+The quality-to-cost ratio is often not worth the additional API calls until your `STYLE_CORE` becomes more mature.
+
+Benefits:
+
+- Lower API cost
+- Faster execution
+- Better free-tier compatibility
+
+Enable Voice refinement only when additional editorial polish is required.
 
 ---
 
-### ❌ VOICE_PROFILE repeats STYLE_PROFILE
+# 🔄 Iteration Strategy
 
-### ✅ Distinguish them
-```
-STYLE = "I explore ideas through multiple perspectives"
-VOICE = "Ensure each section's perspective shift feels inevitable, not forced"
+## Recommended Process
 
-STYLE = "I use concrete examples"
-VOICE = "Cut examples that illustrate the obvious"
+After every 5–10 essays:
 
-STYLE = "I end with insight, not summary"
-VOICE = "Ensure the final sentence couldn't appear anywhere else in the content"
-```
+1. Review weak patterns
+2. Add corrective rules
+3. Remove ineffective instructions
+4. Tighten forbidden patterns
+5. Simplify conflicting guidance
 
----
-
-## Advanced: Creating Multiple Voices
-
-If you want different voices for different types of contents:
-
-### Option 1: Switch profiles seasonally
-Update STYLE_PROFILE and VOICE_PROFILE once per season.
-
-### Option 2: Create multiple script versions
-(More advanced — requires cloning the pipeline)
-
-### Option 3: Use a "Default" voice
-Create one STYLE_PROFILE that works across all your content.
-
-(Recommended for starting out)
+Treat voice configuration as an evolving editorial system.
 
 ---
 
-## Quick Customization Checklist
+# ⚠️ Important Philosophy
 
-Before using the pipeline:
+The pipeline is the orchestration layer.
 
-- [ ] Filled in [YOUR NAME]
-- [ ] Named 3-5 writers in STYLE DNA
-- [ ] Listed 5-10 forbidden patterns
-- [ ] Described your multi-lens approach
-- [ ] Written specific sentence rules
-- [ ] Run one test topic
-- [ ] Read the output
-- [ ] Updated profile based on output
+Your voice profiles are the editorial intelligence layer.
 
-Once complete, you're ready to publish.
+The system amplifies the quality of the instructions you provide.
 
 ---
 
-## When to Iterate
+# 🔒 Public vs Private Logic
 
-After each content, ask:
-1. Does this sound like me?
-2. Did it use forbidden patterns I don't like?
-3. Did it miss any key aspects of my voice?
+The public repository intentionally exposes:
 
-If yes to any, update STYLE_PROFILE or VOICE_PROFILE and rerun.
+- Pipeline architecture
+- State management
+- Recovery systems
+- Templates and best practices
 
-After 3-5 contents, your profiles will be dialed in.
+while omitting:
+
+- Proprietary prompts
+- Editorial heuristics
+- Voice systems
+- Internal optimization logic
+
+Your strongest `STYLE_CORE` and `VOICE_CORE` configurations should remain private.
 
 ---
 
-## Resources
+# 📚 Recommended Reading
 
-- Compare your output to contents you admire
-- Notice what's different
-- Add those patterns to STYLE_PROFILE
-- Test again
+| File | Purpose |
+|---|---|
+| `README.md` | Repository overview |
+| `docs/SETUP.md` | Installation guide |
+| `docs/ARCHITECTURE.md` | Pipeline breakdown |
+| `docs/ERROR_RECOVERY.md` | Troubleshooting guide |
+| `scripts/pipeline.gs` | Core orchestration engine |
 
-The profile is a living document. Update it as you learn what works.
+---
+
+# 📌 Next Steps
+
+1. Customize the templates above
+2. Run a few test essays
+3. Refine based on real output
+4. Repeat
+
+Strong editorial systems emerge through iteration, not perfect first drafts.
+
+---
+
+Built by Mahesh Mali
