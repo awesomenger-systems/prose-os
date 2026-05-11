@@ -1,116 +1,295 @@
-# ⚡ Quick Reference — ProseOS Pipeline Cheat Sheet
+# ⚡ Prose OS — Quick Reference Cheat Sheet
 
-A high-level overview for daily operations. Bookmark this page.
+High-level operational guide for daily workflow management, troubleshooting, and pipeline execution.
 
----
-
-## 🚀 60-Second Setup
-
-1. Copy the Google Sheet Template.
-2. Go to **Extensions → Apps Script**, delete default code, and paste `scripts/pipeline.gs`.
-3. Go to **Project Settings** (gear icon) → **Script Properties** → Add:
-   - **Property**: `GEMINI_API_KEY`
-   - **Value**: Your API key from [ai.google.dev](https://ai.google.dev)
-4. Customize `STYLE_PROFILE` and `VOICE_PROFILE` at the top of the script.
-5. Add a topic in the **Dashboard** tab (Row 2).
-6. Click **Awesomengers → Run Pipeline**.
+Bookmark this document for quick access.
 
 ---
 
-## 🏗️ The 17-Stage Pipeline
-① Duplicate Check → ② Insight Generator → ③ Thesis Architect → ④ Hook Writer
-↓
-⑤ Writer Part 1 → ⑥ Writer Part 2 → ⑦ Word Count Gate (Quality Gate)
-↓
-⑧ Fact Checker 1 → ⑨ Fact Checker 2 → ⑩ Merge Sections
-↓
-⑪ Voice Architect 1 → ⑫ Voice Architect 2 → ⑬ Link Injector
-↓
-⑭ Blog Formatter → ⑮ SEO Generator → ⑯ Image Prompt Architect
-↓
-⑰ Final Editor → Published Google Doc
+# 🚀 60-Second Setup
+
+## 1. Copy the Google Sheet Template
+
+Duplicate the provided template spreadsheet.
 
 ---
 
-## 🚦 Status Meanings
+## 2. Open Apps Script
 
-| Status            | Meaning                                      |
-|-------------------|----------------------------------------------|
-| **Pending**       | Ready to process                             |
-| **Processing**    | Currently running                            |
-| **Ready**         | Complete — Google Doc generated              |
-| **Ready - Review**| Complete but requires manual approval        |
-| **Error**         | Failed — check Usage Log                     |
-| **Quota Wait**    | API limit hit — wait for reset               |
-| **Content Fail**  | Quality gate failed                          |
+Go to:
 
----
+```text
+Extensions → Apps Script
+```
 
-## Essential Menu Commands
+Delete the default code and paste:
 
-| Command                        | When to Use                                      |
-|--------------------------------|--------------------------------------------------|
-| **Run Pipeline**               | Process next Pending row                         |
-| **Force Rerun**                | Retry failed, Ready, or Content Fail rows        |
-| **Resume Quota Wait Rows**     | After quota reset (~1:30 AM IST)                 |
-| **Discover Trending Ideas**    | Generate 5 new essay ideas from Reddit/HN        |
-| **Approve Ideas to Dashboard** | Move approved ideas from Idea Bank               |
-| **Archive Finished Articles**  | Move Ready articles to Memory sheet              |
-| **Color-Code Dashboard**       | Visual color coding by status                    |
+```text
+scripts/pipeline.gs
+```
 
 ---
 
-## 💰 API Cost & Optimization
+## 3. Add Your Gemini API Key
 
-| Scenario                    | API Calls | Approx. Time | Recommendation          |
-|-----------------------------|-----------|--------------|-------------------------|
-| Full Pipeline               | 11–13     | 2–3 min      | Maximum quality         |
-| **Skip Voice** (Recommended)| 9–11      | ~2 min       | **Best balance**        |
-| Skip Fact + Voice           | 7–9       | 90–120 sec   | Speed & cost saving     |
+Go to:
 
-**Pro Tip:** Use the **Skip Fact-Check** and **Skip Voice** columns in Dashboard to save up to 4 API calls per essay.
+```text
+Project Settings → Script Properties
+```
 
----
+Add:
 
-## 🛠️ Common Errors & Quick Fixes
+| Property | Value |
+|---|---|
+| `GEMINI_API_KEY` | Your Gemini API key |
 
-| Error                              | Cause                        | Quick Fix                                      |
-|------------------------------------|------------------------------|------------------------------------------------|
-| Quota exceeded (429)               | Daily limit hit              | Wait → Resume Quota Wait Rows                  |
-| DUPLICATE WARNING                  | Topic too similar            | Change angle or force "Insight Generator"      |
-| TRUNCATION                         | Response cut off             | Set Agent back → Force Rerun                   |
-| CONTENT FAIL                       | Malformed output             | Force Rerun on that stage                      |
-| GEMINI_API_KEY not found           | Key not set                  | Add in Project Settings → Script Properties    |
+Get your API key from:
+
+```text
+https://ai.google.dev
+```
 
 ---
 
-## 🦾 Manual Intervention (Co-Writing)
+## 4. Customize Editorial Voice
 
-You can edit columns manually. After editing, set the **Agent** to the next logical stage and click **Force Rerun**.
+Edit:
 
-- Edit **Thesis** → Set Agent to `Hook Writer`
-- Edit **Hook** → Set Agent to `Writer Part 1`
-- Edit **Section 1** → Set Agent to `Voice Architect (Part 1)`
-- Edit **Section 2** → Set Agent to `Voice Architect (Part 2)`
+```javascript
+STYLE_CORE
+VOICE_CORE
+```
 
----
+These control:
 
-## 📄 Documentation Index
-
-- [`scripts/pipeline.gs`](scripts/pipeline.gs) — Main engine
-- [`docs/SETUP.md`](docs/SETUP.md) — Step-by-step onboarding (start here)
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — Detailed stage breakdown
-- [`docs/VOICE_PROFILE_EXAMPLE.md`](docs/VOICE_PROFILE_EXAMPLE.md) — How to engineer your voice
-- [`docs/ERROR_RECOVERY.md`](docs/ERROR_RECOVERY.md) — Full troubleshooting guide
-- [`README.md`](README.md) — Project overview
+- Editorial structure
+- Writing style
+- Formatting behavior
+- Refinement logic
 
 ---
 
-**Pro Tip:**  
-The quality of your output depends **90%** on how well you define `STYLE_PROFILE`.  
-Spend time refining it — the pipeline will amplify a good voice definition.
+## 5. Add a Topic
+
+Open the `Dashboard` sheet and add a topic.
+
+Example:
+
+```text
+Why long-form AI pipelines outperform single prompts
+```
 
 ---
 
-**Questions?**  
-Check `ERROR_RECOVERY.md` first, then open a GitHub issue.
+## 6. Run the Pipeline
+
+From the menu:
+
+```text
+Prose OS → ▶ Run Pipeline
+```
+
+---
+
+# 🏗️ Current Pipeline Flow
+
+```text
+① Duplicate Check
+    ↓
+② Insight Generator
+    ↓
+③ Structure Planner
+    ↓
+④ Hook Writer
+    ↓
+⑤ Writer Part 1
+    ↓
+⑥ Writer Part 2
+    ↓
+⑦ Fact Checker
+    ↓
+⑧ Voice Architect (Optional)
+    ↓
+⑨ SEO Generator
+    ↓
+⑩ Final Editor
+    ↓
+Publication-Ready Google Doc
+```
+
+Each stage executes independently and advances the pipeline state forward.
+
+---
+
+# 🚦 Pipeline Status Meanings
+
+| Status | Meaning |
+|---|---|
+| Pending | Ready to start |
+| Processing | Currently running |
+| Ready | Completed successfully |
+| Ready - Review | Completed but requires manual review |
+| Error | Stage execution failed |
+| Quota Wait | Gemini quota exhausted |
+| Content Fail | Validation or duplicate failure |
+
+---
+
+# ⚙️ Essential Menu Commands
+
+| Command | Purpose |
+|---|---|
+| Run Pipeline | Execute next eligible stage |
+| Force Rerun | Retry failed or stalled rows |
+| Resume Quota Wait | Reactivate paused rows |
+| Color Code Dashboard | Apply visual status colors |
+| Install Trigger | Enable scheduled execution |
+
+---
+
+# 💰 API Cost & Optimization
+
+| Configuration | API Calls | Est. Time | Recommended For |
+|---|---|---|---|
+| Full Pipeline | 9–10 | 2–3 min | Highest quality |
+| Skip Voice (Default) | 8–9 | ~2 min | Best balance |
+| Skip Fact + Voice | 6–7 | 75–100 sec | Fast drafting |
+
+## Recommended Default
+
+```javascript
+const RECOMMEND_SKIP_VOICE = true;
+```
+
+This significantly reduces API usage while preserving most output quality.
+
+---
+
+# 🛠️ Common Errors & Fast Recovery
+
+| Error | Cause | Recovery |
+|---|---|---|
+| Quota exceeded (429) | Gemini rate limits | Wait → Resume Quota Wait |
+| Duplicate warning | Similar archived topic | Change angle or override |
+| Truncation | Output stopped early | Reset Agent → Force Rerun |
+| Missing API key | Script property missing | Add `GEMINI_API_KEY` |
+| Word count fail | Sections too short | Reset to Writer Part 1 |
+
+---
+
+# 🔄 Manual Recovery Workflow
+
+Because Prose OS is state-aware, you can manually intervene at any stage.
+
+## Recovery Steps
+
+1. Edit the relevant column manually
+2. Set the `Agent` column to the desired resume stage
+3. Run `Force Rerun`
+
+---
+
+## Common Resume Points
+
+| Edited Column | Resume Agent |
+|---|---|
+| Insight | Structure Planner |
+| Hook | Writer Part 1 |
+| Section 1 | Writer Part 2 |
+| Final Essay | SEO Generator |
+
+---
+
+# 📊 Core Sheets
+
+| Sheet | Purpose |
+|---|---|
+| Dashboard | Main orchestration queue |
+| Idea Bank | Topic discovery + approvals |
+| Memory | Semantic archive summaries |
+| Published Links | Internal linking references |
+| Pipeline Health | Runtime diagnostics |
+
+---
+
+# ⚠️ Stability Tips
+
+## Recommended
+
+- Use focused, specific topics
+- Keep `STYLE_CORE` detailed
+- Keep `VOICE_CORE` modular
+- Let the default sequential execution run normally
+
+---
+
+## Avoid
+
+- Extremely broad topics
+- Multi-topic essays
+- Excessively long prompts
+- Running without API configuration
+
+---
+
+# ⚙️ Execution Model
+
+The system intentionally processes:
+
+- One row
+- One stage
+- Per execution
+
+Advantages include:
+
+- Easier recovery
+- Better quota handling
+- Reduced failure propagation
+- Improved long-form stability
+
+This design is optimized around Apps Script execution limits.
+
+---
+
+# 📚 Documentation Index
+
+| File | Purpose |
+|---|---|
+| `README.md` | Repository overview |
+| `ARCHITECTURE.md` | Pipeline breakdown |
+| `SETUP.md` | Installation guide |
+| `CUSTOMIZATION.md` | Voice and editorial tuning |
+| `ERROR_RECOVERY.md` | Troubleshooting guide |
+| `scripts/pipeline.gs` | Core orchestration engine |
+
+---
+
+# 🧠 Most Important Principle
+
+The orchestration system is the engine.
+
+```javascript
+STYLE_CORE
+VOICE_CORE
+```
+
+are the editorial intelligence layer.
+
+The pipeline amplifies the quality of your editorial configuration.
+
+---
+
+# 🚀 Next Step
+
+Read:
+
+```text
+ARCHITECTURE.md
+```
+
+for a detailed explanation of pipeline stages, state management, and orchestration design.
+
+---
+
+Built by Mahesh Mali
