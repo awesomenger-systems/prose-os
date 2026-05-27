@@ -1,6 +1,28 @@
-# Prose OS — Multi-Stage AI Editorial Pipeline
+# Prose OS v2 — Retrieval-Native Editorial Cognition System
 
-Production-grade editorial pipeline built with Google Apps Script, Google Sheets, and Gemini for long-form publishing workflows.
+Production-grade editorial infrastructure built with **Google Apps Script**, **Google Sheets**, and the **Gemini API**.
+
+Prose OS transforms long-form publishing into a **deterministic, stateful, retrieval-native editorial pipeline** designed for the AI-first internet.
+
+Instead of relying on one-shot prompting, Prose OS separates writing into structured cognitive layers handling:
+
+- Semantic Planning
+- Search Intent Analysis
+- Retrieval Optimization
+- Drafting
+- Editorial Refinement
+- Semantic Memory
+- Fact Auditing
+- Publication Formatting
+
+The result is long-form content optimized not just for readability — but for:
+
+- Semantic Retrieval
+- AI Extraction
+- AI Overviews
+- GEO / AEO Visibility
+- Conversational Search
+- Long-Term Discoverability
 
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
 ![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=flat&logo=google)
@@ -9,149 +31,327 @@ Production-grade editorial pipeline built with Google Apps Script, Google Sheets
 
 ---
 
-## 🚀 Key Features
+# Why Prose OS?
 
-- **19-stage editorial pipeline** with validation gates
-- Semantic deduplication against your archive
-- Automated trend and topic discovery
-- Intelligent model routing
-- Advisory fact-checking + risk validation
-- Structured SEO/AEO/GEO metadata generation
-- Editorial voice refinement workflow
-- Resumable & quota-aware execution
-- Production-ready Google Docs output
-- Semantic memory compression
-- Pipeline observability and recovery monitoring
+The internet’s discovery layer has fundamentally changed.
 
-### Capabilities Overview
+Modern content discovery increasingly happens through:
 
-| Feature | Included |
-|---|---|
-| Multi-Stage Orchestration | ✅ |
-| Semantic Deduplication | ✅ |
-| Trend Discovery | ✅ |
-| Model Routing | ✅ |
-| Fact & Risk Validation | ✅ |
-| Voice Refinement | ✅ |
-| SEO/AEO Metadata | ✅ |
-| Google Docs Export | ✅ |
-| Pipeline Recovery | ✅ |
+- Google AI Overviews
+- Perplexity
+- Semantic Search Engines
+- Conversational Retrieval Systems
+- Answer Engines
+- Generative Engine Optimization (GEO)
 
-![Prose OS Dashboard](images/prose-os.png)
+Most AI writing systems optimize for:
 
-*Google Sheets orchestration dashboard showing pipeline stages, execution states, and operational controls.*
+- Generation Speed
+- Article Volume
+- One-Shot Prompting
+
+Prose OS optimizes for:
+
+- Retrieval
+- Semantic Portability
+- Editorial Consistency
+- Extraction Readiness
+- Structural Clarity
+- Retrieval-Native Publishing
 
 ---
 
-# What Is Prose OS?
+# v1 vs v2
 
-**Prose OS** is an AI editorial operating system — a structured, software-engineered approach to long-form content creation.
-
-It transforms single-prompt generation into a reliable, observable, and recoverable editorial pipeline.
-
-Google Sheets acts as a lightweight state machine where each row progresses through explicit editorial states, validation layers, and recovery paths.
-
----
-
-## Core Philosophy
-
-Instead of asking one model to do everything in one shot, Prose OS separates editorial responsibilities into independent stages:
-
-- Insight generation
-- Narrative structure planning
-- Draft generation
-- Fact validation
-- Editorial refinement
-- Formatting & metadata
-- Memory & deduplication
-
-This produces:
-
-- Higher consistency
-- Better structural quality
-- Easier debugging
-- Controlled execution
-- More reliable long-form output
+| Feature | v1 | v2 (Current) |
+|---|---|---|
+| Architecture | 19-Stage Linear Pipeline | 7-Layer Editorial Cognition System |
+| Runtime Strategy | Sequential Stage Chaining | Consolidated Cognitive Execution Layers |
+| Search Focus | Traditional SEO | Retrieval-Native GEO + AEO |
+| Memory | Basic Semantic Deduplication | Graph-Oriented Semantic Memory |
+| Fact Validation | Destructive Rewriting | Non-Destructive Advisory Auditing |
+| Content Design | Article-Centric | Extraction-First Architecture |
+| Quality Control | Structural Validation | Semantic + Readability + Retrieval Gates |
+| AI Optimization | Post-Publishing SEO | Retrieval-Native Semantic Structuring |
 
 ---
 
-# How It Works
+# Core Features & Cognitive Layers
 
-## 1. Editorial Discovery Mode
+## 1. Strategic Architect
 
-The system automatically discovers and filters high-potential topics from:
+Consolidates:
 
-- Reddit
-- Hacker News
-- Google Trends
+- Semantic Deduplication
+- Search Intent Analysis
+- Retrieval Mapping
+- Narrative Structure Planning
+- GEO / AEO Optimization
 
-Ideas are filtered through configurable editorial relevance logic before entering the **Idea Bank**.
+Before drafting begins, Prose OS generates a structured semantic blueprint anchored around a deterministic semantic triad:
 
----
+$$
+T_{\text{semantic}}
+=
+\text{Primary Entity}
+\longrightarrow
+\text{Core Mechanism}
+\longrightarrow
+\text{Observable Outcome}
+$$
 
-## 2. Editorial Pipeline Mode
-
-Once a topic is approved, it flows through a deterministic 19-stage pipeline:
-
-1. **Duplicate Check** — Semantic similarity scan
-2. **Insight Generator** — Core thematic insights
-3. **Structure Planner** — Editorial structure generation
-4. **Hook Writer** — Opening and framing
-5. **Writer Part 1** — First half draft
-6. **Writer Part 2** — Second half draft
-7. **Word Count Gate** — Quality threshold validation
-8. **Fact Checker (Part 1)** — Advisory review
-9. **Fact Checker (Part 2)** — Advisory review
-10. **Merge & Integrity** — Structural validation
-11. **Voice Architect (Part 1)** — Editorial refinement
-12. **Voice Architect (Part 2)** — Editorial refinement
-13. **Fact Validator** — Risk detection
-14. **Link Injector** — Internal linking context
-15. **Blog Formatter** — Structured blog formatting
-16. **SEO Generator** — Titles, FAQs, metadata
-17. **Image Prompt Architect** — Editorial image prompts
-18. **Semantic Summary** — Memory compression
-19. **Final Editor** — Google Doc generation & archiving
-
-Every stage is:
-
-- Resumable
-- Observable
-- Recoverable
-- Validation-aware
+This creates retrieval-aware structural alignment before content generation begins.
 
 ---
 
-# ⚙️ Architecture Overview
+## 2. Unified Opener
 
-![Architecture Overview](images/architecture-overview.png)
+Generates recognition-first introduction hooks optimized for:
 
-*High-level workflow showing editorial discovery, orchestration, validation, refinement, and publishing stages.*
+- AI Overviews
+- Featured Snippets
+- Semantic Extraction
+- Conversational Retrieval
+- Search Intent Matching
+
+The system surfaces primary search intent signals early to maximize semantic discoverability and extraction quality.
 
 ---
 
-# 🧠 Architecture Highlights
+## 3. Unified Content Engineering
+
+Handles:
+
+- Narrative Continuity
+- Semantic Portability
+- Contextual Coherence
+- Conceptual Escalation
+- Retrieval-Aware Structure
+- Emotional Pacing
+
+Every paragraph is designed as an independent semantic unit capable of surviving AI extraction without losing informational integrity.
+
+---
+
+## 4. Quality & Structural Gates
+
+Validation layers continuously evaluate:
+
+- Semantic Repetition
+- Readability
+- Paragraph Density
+- Abstraction Drift
+- AI-Text Patterns
+- Structural Symmetry
+- Vocabulary Diversity
+
+Section balance constraints are enforced programmatically:
+
+$$
+\Delta W
+=
+|
+\text{Count}(\text{Section}_1)
+-
+\text{Count}(\text{Section}_2)
+|
+\le
+\theta_{\text{balance}}
+$$
+
+Low-quality outputs are halted before progressing downstream.
+
+---
+
+## 5. Advisory Fact & Risk Auditing
+
+Runs non-destructive validation passes across:
+
+- Unsupported Claims
+- Weak Grounding
+- Logical Inconsistencies
+- Structural Gaps
+- Factual Risk Areas
+
+Issues are categorized into explicit severity layers:
+
+- `HIGH` — Critical factual deviations or structural collapses; triggers an immediate pipeline halt (`Action Required`).
+- `MEDIUM` — Weak grounding, unsupported reasoning chains, or logical jumps requiring manual editorial review.
+- `LOW` — Style, rhythm, or atmospheric inconsistencies permitted to continue through the publication pipeline.
+
+Unlike traditional AI rewriting systems, Prose OS preserves authorial voice while improving factual reliability.
+
+---
+
+## 6. Graph-Oriented Semantic Memory
+
+Prose OS continuously compares new drafts against previously published ideas using lightweight cryptographic semantic signatures.
+
+This helps prevent:
+
+- Topic Overlap
+- Conceptual Repetition
+- Semantic Saturation
+- Recursive Explanation Loops
+- Generic “AI Texture”
+
+The semantic memory system maintains long-term editorial consistency across large publishing archives.
+
+---
+
+## 7. Publication Engine
+
+Automatically handles:
+
+- Markdown Formatting
+- Heading Normalization
+- Spacing Cleanup
+- Semantic Internal Linking
+- Retrieval-Aware Formatting
+- Google Docs Rendering
+- Clean Publishing Output
+
+The final result is optimized for both:
+
+- Human Readability
+- Machine Interpretability
+
+---
+
+# Retrieval-Native Engineering (GEO / AEO)
+
+Prose OS abandons traditional keyword stuffing in favor of algorithmic machine interpretability.
+
+The system is built around three foundational retrieval constraints:
+
+---
+
+## Semantic Portability
+
+Every paragraph should retain meaning independently if extracted by:
+
+- AI Overviews
+- Answer Engines
+- Semantic Retrieval Systems
+- Conversational Search Interfaces
+
+The pipeline removes reliance on weak contextual connectors such as:
+
+- “As Mentioned Above”
+- “Consequently”
+- “Previously Discussed”
+
+This improves:
+
+- Snippet Extraction
+- Semantic Indexing
+- AI Summarization Quality
+- Retrieval Precision
+
+---
+
+## Extraction-First Structure
+
+Important concepts and definitional answers are layered directly beneath headings to maximize contextual matching for:
+
+- AI Overviews
+- Featured Snippets
+- Answer Engines
+- Retrieval Systems
+
+The system prioritizes:
+
+- Informational Density
+- Structural Clarity
+- Machine Readability
+- Semantic Compression
+
+over traditional SEO keyword repetition.
+
+---
+
+## Contextual Anchoring
+
+Content tracking focuses heavily on:
+
+- Entity Relationships
+- Observable Behaviors
+- Grounded Examples
+- Technical Mechanisms
+- Environmental Residue
+
+instead of vague abstraction-heavy prose.
+
+---
+
+## Target Retrieval Interfaces
+
+### Generative Engine Optimization (GEO)
+
+Optimized for:
+
+- Google AI Overviews
+- Conversational Search
+- Semantic Retrieval Layers
+- LLM Discovery Systems
+
+### Answer Engine Optimization (AEO)
+
+Optimized for:
+
+- Featured Snippets
+- Answer Engines
+- Extractive Summarization
+- Semantic Indexing Pipelines
+
+---
+
+# Architecture Highlights
+
+## Runtime-Constrained Execution Design
+
+Google Apps Script operates under strict execution ceilings:
+
+- ~6-Minute Runtime Limits For Standard Environments
+- Extended Execution Windows For Select Google Workspace Enterprise Tiers
+
+The original v1 architecture relied on long sequential stage chains, which increased timeout risk and retry fragmentation.
+
+v2 consolidates execution into **7 cognitive layers** specifically to:
+
+- Reduce API Overhead
+- Minimize Cascading Timeout Failures
+- Preserve Contextual Continuity
+- Improve Recovery Behavior
+- Fit Safely Within Apps Script Runtime Windows
+
+This architectural consolidation is a deliberate reliability optimization — not simplification.
+
+---
 
 ## Smart Model Routing
 
-Different model tiers are used for different workloads:
+Different model tiers handle different workloads.
 
-- **Lightweight models** → Validation, formatting, metadata, deduplication
-- **Reasoning-heavy models** → Drafting, refinement, long-form generation
+### Lightweight Models
 
----
+Used for:
 
-## Quality Gates
+- Formatting
+- Validation
+- Metadata
+- Structural Checks
+- Semantic Deduplication
 
-Validation layers prevent malformed or incomplete output from progressing downstream.
+### Reasoning Models
 
-Checks include:
+Used for:
 
-- Word count thresholds
-- Continuation markers
-- Structural validation
-- Formatting validation
-- Semantic coherence
+- Drafting
+- Narrative Continuity
+- Semantic Synthesis
+- Editorial Refinement
+- Long-Form Reasoning
 
 ---
 
@@ -159,297 +359,284 @@ Checks include:
 
 Compressed semantic summaries maintain long-term awareness across published content.
 
-This helps prevent:
+This reduces:
 
-- Topic overlap
-- Repeated arguments
-- Redundant editorial structures
+- Repeated Arguments
+- Topic Clustering
+- Conceptual Overlap
+- Structural Redundancy
 
----
-
-## Advisory Fact Architecture
-
-The pipeline surfaces factual risks without silently rewriting content.
-
-This preserves:
-
-- Authorial intent
-- Editorial voice
-- Structural integrity
-
-while still improving factual reliability.
+while improving archive-wide consistency.
 
 ---
 
-# 📊 Core Sheets
+## Production Safeguards
 
-| Sheet | Role |
+Built-in resilience systems include:
+
+- Prompt Injection Protection
+- SSRF Network Isolation
+- Prompt Sanitization
+- Adaptive Retry Handling
+- Quota-Aware Execution
+- Graceful Degradation
+- Semantic Duplicate Detection
+- Context Overflow Prevention
+- Recovery-Aware Pipeline States
+
+### SSRF Network Isolation & Prompt Sanitization
+
+The pipeline validates outbound URLs and actively blocks:
+
+- Localhost Loopbacks (`127.0.0.1`)
+- Internal Network Ranges
+- Malicious Redirect Chains
+- Prompt Override Injections
+- Role Impersonation Attempts
+- Unsafe Execution Payloads
+
+This prevents retrieval and enrichment layers from interacting with unsafe network targets or compromised prompt contexts.
+
+---
+
+# Core Sheets
+
+| Sheet | Purpose |
 |---|---|
-| **Dashboard** | Main orchestration & monitoring |
-| **Idea Bank** | Discovery queue & approvals |
-| **Memory** | Semantic archive |
-| **Published Links** | Internal linking database |
-| **Pipeline Health** | Runtime diagnostics |
+| `Pipeline Runtime` | Main Orchestration Dashboard & State Machine |
+| `Idea Bank` | Discovery Queue & Prioritization |
+| `Memory` | Semantic Archive & Deduplication Layer |
+| `Published Links` | Internal Linking Database |
+| `Pipeline Health` | Runtime Diagnostics & Monitoring |
 
 ---
 
-# 🔄 Pipeline States
+# Pipeline States
 
-The system uses explicit execution states:
+The system tracks explicit execution states:
 
-- Pending
-- Processing
-- Quota Wait
-- Error
-- Ready
-- Ready - Review
-- Content Fail
+- `Pending`
+- `Processing`
+- `Quota Wait`
+- `Error`
+- `Ready`
+- `Ready - Review`
+- `Content Fail`
+- `Action Required`
 
-This makes failures observable and recoverable instead of silently propagating downstream.
-
-![Pipeline Health Dashboard](images/pipeline-health.png)
-
-*Runtime observability dashboard showing stage distribution, quota status, processing states, and pipeline health.*
+Failures remain observable and recoverable instead of silently propagating downstream.
 
 ---
 
-# 🛠️ Quick Start
+# Quick Start
 
-1. **Make a copy** of the spreadsheet template
-2. **Open Apps Script** and paste the code
-3. **Add your Gemini API key** in Script Properties
-4. **Customize** `STYLE_CORE`, `VOICE_CORE`, and discovery sources
-5. Run **"Run Pipeline"** from the Prose OS menu
+## 1. Create the Spreadsheet
+
+Create a Google Sheet with these tabs:
+
+```text
+Pipeline Runtime
+Idea Bank
+Memory
+Published Links
+Pipeline Health
+```
 
 ---
 
-# 🧩 Customization
+## 2. Install the Script
 
-Prose OS supports configurable:
+1. Open:
 
-- Editorial voice guidance
-- Model routing
-- Pipeline stages
-- Discovery sources
-- Formatting behavior
-- SEO/AEO rules
-- Validation strictness
+```text
+Extensions → Apps Script
+```
 
-Example:
+2. Paste the production `Code.gs` file.
+
+3. Configure Script Properties:
+
+| Variable | Purpose |
+|---|---|
+| `GEMINI_API_KEY` | Gemini API Authentication |
+| `SERPER_API_KEY` | Real-Time SERP & Retrieval Context |
+| `FOLDER_ID` | Google Docs Export Destination |
+
+> 🛡️ **Security Note:** Never hardcode API credentials directly into `Code.gs`. Prose OS intentionally relies on Google Apps Script project-level Script Properties to isolate runtime secrets from source-controlled code.
+
+---
+
+## 3. Launch the Pipeline
+
+From the Google Sheet menu:
+
+```bash
+🚀 Prose OS → Run Pipeline
+```
+
+The system automatically processes approved rows through the editorial workflow.
+
+---
+
+# Customization
+
+Core behavior is configured through centralized constants inside `Code.gs`.
 
 ```javascript
+const DEFAULT_MODEL = "gemini-2.5-flash";
+
 const STYLE_CORE = `
-Add:
-- Editorial guidance
-- Formatting rules
-- Structural preferences
-- SEO/AEO behavior
-- Publication constraints
+VOICE: Calm, observant, emotionally precise.
+STRICT PURGE: Remove abstraction inflation and hype language.
 `;
+
+const AEO_CORE = `
+SEMANTIC PORTABILITY:
+Every paragraph should retain meaning independently.
+`;
+
+const EDITORIAL_MODES = [
+  "FRICTION_ANALYSIS",
+  "SYSTEMS_ANALYSIS",
+  "NARRATIVE_INTERPRETATION"
+];
 ```
 
-```javascript
-const VOICE_CORE = `
-Add:
-- Editing priorities
-- Clarity rules
-- Rhythm guidance
-- Refinement behavior
-`;
-```
+You can customize:
+
+- Editorial Voice
+- Retrieval Optimization
+- Semantic Memory Heuristics
+- Discovery Systems
+- Validation Strictness
+- GEO / AEO Behavior
+- Model Routing Logic
 
 ---
 
-# ☁️ Why Google Apps Script?
+# Why Google Apps Script?
 
-Prose OS intentionally uses Apps Script and Google Sheets because they provide:
+Prose OS intentionally uses Google infrastructure because it provides:
 
-- Native Sheets + Docs integration
-- Zero infrastructure management
-- Transparent orchestration state
-- Low operational cost
-- Easy collaboration
-- Built-in persistence
+- Native Sheets + Docs Integration
+- Transparent Orchestration State
+- Zero Infrastructure Management
+- Low Operational Overhead
+- Built-In Persistence
+- Easy Collaboration
 
-This keeps the system simple, observable, and maintainable.
+This keeps the system:
 
----
+- Observable
+- Maintainable
+- Recoverable
+- Production-Friendly
 
-# ❓ FAQ
-
-## Why not just use ChatGPT or Claude Projects?
-
-GPTs and Projects improve individual interactions but do not provide:
-
-- Persistent workflow state
-- Multi-stage orchestration
-- Validation layers
-- Recovery handling
-- Structured execution
-
-Prose OS is designed as a controlled editorial system rather than a conversational interface.
+without requiring complex DevOps infrastructure.
 
 ---
 
-## Why not use n8n, Make, or similar workflow tools?
+# FAQ
 
-Workflow tools are optimized for moving data between services, not managing long-form editorial pipelines.
+## How is this different from ChatGPT?
 
-Prose OS relies heavily on:
+Prose OS is infrastructure, not just prompting.
 
-- Native Google Sheets orchestration
-- Google Docs formatting
-- Stateful stage progression
-- Validation-aware workflows
+It handles:
 
-Rebuilding those capabilities in tools like n8n would add significant complexity without solving a meaningful problem for this use case.
+- Orchestration
+- Semantic Memory
+- Retrieval Optimization
+- Editorial Validation
+- Stateful Execution
+- Publishing Workflows
 
----
-
-## Can multiple people use the pipeline simultaneously?
-
-Not efficiently in its current form.
-
-Apps Script executes sequentially, so additional contributors increase queue time and reduce throughput.
-
-The system works best for:
-
-- Individual writers
-- Small editorial teams
-- Low-to-medium publishing volume
+instead of relying on single conversational prompts.
 
 ---
 
-## Why does the pipeline run one step at a time?
-
-This design avoids Apps Script timeout limits and improves reliability.
-
-Processing one stage per execution:
-
-- Prevents cascading failures
-- Simplifies retries
-- Improves recoverability
-- Keeps execution predictable
-
----
-
-## Can Prose OS generate content instantly like ChatGPT?
-
-No.
-
-Prose OS is designed for structured editorial workflows rather than instant conversational generation.
-
-Stages execute independently through controlled progression and scheduled execution.
-
----
-
-## When should you move beyond this setup?
-
-Consider migrating when you need:
-
-- Parallel execution
-- High publishing throughput
-- Multiple concurrent contributors
-- Advanced external integrations
-- Enterprise-scale orchestration
-
-For small editorial workflows, the current architecture remains highly efficient and low-maintenance.
-
----
-
-## Can Prose OS run on Gemini free-tier limits?
+## Does Prose OS support other LLMs?
 
 Yes.
 
-The system is optimized for free-tier usage through:
+The orchestration layer is modular and can be adapted for:
 
-- Sequential execution
-- Scoped prompts
-- Validation-first workflows
-- Quota-aware recovery handling
+- OpenAI
+- Anthropic
+- Local Models
+- Alternative Providers
+
+by replacing the routing layer.
 
 ---
 
-## Does Prose OS support other models?
+## Can multiple people use it simultaneously?
+
+Best suited for:
+
+- Individuals
+- Small Editorial Teams
+- Low-To-Medium Publishing Volume
+
+Google Apps Script executes sequentially and enforces strict runtime ceilings, so very high concurrency or long-running workloads may require external infrastructure.
+
+---
+
+## Is it free to use?
 
 Yes.
 
-The orchestration architecture is modular and can be adapted to alternative model providers by replacing the routing and API layers.
+Released under the MIT License.
 
 ---
 
-## How does semantic deduplication work?
+# Who It's For
 
-The pipeline compares new topics against semantic summaries and publishing history rather than relying only on keyword matching.
-
-This helps reduce conceptual overlap across published content.
-
----
-
-## Why use multi-stage orchestration instead of one prompt?
-
-Separating drafting, validation, refinement, and formatting into independent stages improves:
-
-- Reliability
-- Consistency
-- Recoverability
-- Structural quality
-- Workflow transparency
+- Long-Form Writers
+- Editorial Teams
+- Independent Researchers
+- GEO / AEO Publishing Workflows
+- Retrieval-Native Publishing Systems
+- AI Infrastructure Builders
+- Semantic Search Content Operations
 
 ---
 
-# 👥 Who It's For
+# Who It's Not For
 
-- Long-form writers & newsletter operators
-- Editorial teams
-- Independent researchers & essayists
-- Workflow systems builders
-- AI publishing enthusiasts
-
----
-
-# 🚫 Who It's Not For
-
-- Mass-produced SEO spam
-- Fully autonomous publishing
-- Bulk low-quality content generation
-- Short-form social automation
+- Bulk Spam SEO
+- One-Click Article Farms
+- Mass Low-Quality Generation
+- Fully Autonomous Content Spam Systems
 
 Prose OS prioritizes:
 
-- Structure
+- Editorial Consistency
+- Semantic Clarity
+- Retrieval Quality
+- Structural Integrity
 - Recoverability
-- Editorial consistency
-- Workflow transparency
-- Operational control
 
 over raw publishing volume.
 
 ---
 
-# 📚 Documentation
-
-- Architecture Guide
-- Setup Guide
-- Customization Guide
-- Error Recovery Guide
-
----
-
-# 📄 License
+# License
 
 MIT — Free to use, modify, and extend.
 
 ---
 
-# 🤝 Contributing
+# Author
 
-Contributions, architectural discussions, workflow improvements, and pipeline extensions are welcome.
+**Mahesh Mali**
+
+Workflow architect focused on:
+- Retrieval-Native Publishing
+- Editorial Systems
+- Semantic Clarity
+- AI-Era Long-Form Infrastructure
 
 ---
 
-⭐ If you're building structured AI publishing systems, editorial orchestration tools, or long-form workflow pipelines, consider starring the repo.
-
----
-
-**Built by Mahesh Mali** — Content systems thinker, published author, and workflow architect.
+⭐ If you're building retrieval-native publishing systems, AI editorial infrastructure, or semantic-first content operations, consider starring the repository.
